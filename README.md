@@ -25,3 +25,8 @@ Tool to generate pythia 8 configuration cards for dark shower models. See arXiv 
 ## additions by Karri
 - produce_cards.py # produces a grid of pythia cards
 - run_pythia.py # runs pythia
+
+
+## Card runner
+- make
+- ./bin/card_runner.exe <pythiaCard> <outFileName> <maxEvents>
