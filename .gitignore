@@ -8,7 +8,6 @@
 !/dark_shower.py
 !/dark_showers_demo.ipynb
 !/test.cmnd
-cards/*
 hepmc/*
 
 .ipynb_checkpoints/
