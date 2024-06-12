@@ -603,7 +603,6 @@ class dark_shower():
         ! HadronLevel:all = off
 
         ! Production settings
-        ! decay the Higgs to two dark quark, turn off all SM branching ratios
         """)
       if production=="wh" or production=="Wh" or production=="WH": 
         file.write("""
@@ -633,10 +632,19 @@ class dark_shower():
         23:9:onMode=0 # bRatio=0.0335000 products=15 -15 
         23:10:onMode=0 # bRatio=0.0668060 products=16 -16 
         """)        
-      else :  
-        file.Write("""HiggsSM:gg2H = on""")
+      elif production=="ggf" or production=="ggF" or production=="GGF" :  
+        file.write("""HiggsSM:gg2H = on""")
+      elif production=="vbf" or production=="VBF" :  
+        file.write("""HiggsSM:ff2Hff = on""")
+      elif production=="tth" or production=="ttH" or production=="TTH" :  
+        file.write("""
+          HiggsSM:gg2Httbar = on
+          HiggsSM:qqbar2Httbar = on""") 
+      else : # all 
+        file.write("""HiggsSM:all = on""")
       
       file.write(f"""  
+        ! decay the Higgs to two dark quark, turn off all SM branching ratios
         25:m0 ={mH}
         25:addChannel = 1 1.0 102 4900101 -4900101
         25:0:onMode=0
