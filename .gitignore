@@ -1,0 +1,15 @@
+
+# But not these files...
+!.gitignore
+!/data/gluon_portal/*.txt
+!/data/darkphoton_portal/*.txt
+!/data/higgs_portal/*.txt
+!/data/vector_portal/*.txt
+!/dark_shower.py
+!/dark_showers_demo.ipynb
+!/test.cmnd
+cards/*
+hepmc/*
+
+.ipynb_checkpoints/
+__pycache__/
