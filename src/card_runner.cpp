@@ -16,8 +16,25 @@
 using namespace Pythia8;
 using namespace std;
 
-int main(int argc, char* argv[]){
 
+
+// Progress bar
+void printProgressBar(int progress, int total, int barWidth) {
+    float ratio = progress / static_cast<float>(total);
+    int pos = static_cast<int>(barWidth * ratio);
+    
+    cout << "[";
+    for (int i = 0; i < barWidth; ++i) {
+        if (i < pos) cout << "=";
+        else if (i == pos) cout << ">";
+        else cout << " ";
+    }
+    cout << "] " << int(ratio * 100.0) << " %\r";
+    cout.flush();
+}
+
+
+int main(int argc, char* argv[]){
     // check user is inputting correct parameters
     if(argc != 4){
         std::cout << "Usage: ./card_runner.exe <pythiaCard> <outFileName> <maxEvents>" << std::endl;
@@ -47,7 +64,12 @@ int main(int argc, char* argv[]){
     // Specify file where HepMC events will be stored.
     HepMC3::WriterAscii ascii_io((outFileName + ".hepmc").c_str());
 
+
+    int barWidth = 50;
+
     for (int iE = 0; iE < maxEvents; ++iE) {
+        printProgressBar(iE,maxEvents,barWidth); // print progress bar
+
         if(!pythia.next()) continue;
         
         // Construct new empty HepMC event and fill it.
@@ -60,6 +82,8 @@ int main(int argc, char* argv[]){
         ascii_io.write_event(hepmcevt);
 
     }
+
+    cout << endl; // last step for the progressbar
 
     return 0;
 }
