@@ -29,4 +29,4 @@ Tool to generate pythia 8 configuration cards for dark shower models. See arXiv 
 
 ## Card runner
 - make
-- ./bin/card_runner.exe <pythiaCard> <outFileName> <maxEvents>
+- ./bin/card_runner.exe pythiaCard outFileName maxEvents
