@@ -68,7 +68,7 @@ int main(int argc, char* argv[]){
     int barWidth = 50;
 
     for (int iE = 0; iE < maxEvents; ++iE) {
-        printProgressBar(iE,maxEvents,barWidth); // print progress bar
+        printProgressBar(iE+1,maxEvents,barWidth); // print progress bar
 
         if(!pythia.next()) continue;
         

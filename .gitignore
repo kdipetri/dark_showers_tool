@@ -1,4 +1,12 @@
 
+/hepmc/*
+/bin/*
+*.hepmc
+
+.ipynb_checkpoints/
+__pycache__/
+
+
 # But not these files...
 !.gitignore
 !/data/gluon_portal/*.txt
@@ -8,7 +16,3 @@
 !/dark_shower.py
 !/dark_showers_demo.ipynb
 !/test.cmnd
-hepmc/*
-
-.ipynb_checkpoints/
-__pycache__/

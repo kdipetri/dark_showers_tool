@@ -27,6 +27,9 @@ Tool to generate pythia 8 configuration cards for dark shower models. See arXiv 
 - run_pythia.py # runs pythia
 
 
-## Card runner
+## Single card runner
 - make
 - ./bin/card_runner.exe pythiaCard outFileName maxEvents
+
+## Run all cards
+- The script run_cards.py takes all the cards of the ./cards directory and runs them, creating the hepmc files in the ./output folder. 
