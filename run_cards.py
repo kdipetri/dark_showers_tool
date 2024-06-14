@@ -36,16 +36,29 @@ def main():
     # Create the directory if it doesn't exist
     os.makedirs(output_path, exist_ok=True)
 
-    nevents = "100"
+    nevents = "10000"
 
     cards_list = []
     for card in glob.glob(path+"/*.cmnd"):
         cards_list.append(card)
 
 
-    numCards = len(cards_list)
-    for iCard,card in enumerate(cards_list):
-        print_progress_bar(iCard + 1, numCards, prefix='Progress:', suffix='Complete', length=50)
+    ignore_file = "./cards/IGNORE"
+    ignore_cards = []
+
+    with open(ignore_file) as file:
+        for line in file:
+            ignore_cards.append(line.rstrip())
+
+    num_cards = len(cards_list)
+
+    for card_index,card in enumerate(cards_list):
+        # skip cards that are in the ignore file
+        print(card)
+        if card.split("/")[-1] in ignore_cards:
+            continue
+        
+        print_progress_bar(card_index + 1, num_cards, prefix='Progress:', suffix='Complete', length=50)
         
         output_file_name = card.split("/")[-1] # get only the card name
         output_file_name = output_file_name[:-5] # erase the .cmnd extension, last 5 characters
