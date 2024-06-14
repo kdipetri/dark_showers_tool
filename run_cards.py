@@ -31,8 +31,8 @@ def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, lengt
 
 def main():
     card_runner = "./bin/card_runner.exe"
-    path = "./cards"
-    output_path = "./output"
+    path = "cards"
+    output_path = "output"
     # Create the directory if it doesn't exist
     os.makedirs(output_path, exist_ok=True)
 
@@ -43,7 +43,7 @@ def main():
         cards_list.append(card)
 
 
-    ignore_file = "./cards/IGNORE"
+    ignore_file = "cards/IGNORE"
     ignore_cards = []
 
     with open(ignore_file) as file:
@@ -54,7 +54,6 @@ def main():
 
     for card_index,card in enumerate(cards_list):
         # skip cards that are in the ignore file
-        print(card)
         if card.split("/")[-1] in ignore_cards:
             continue
         
@@ -67,13 +66,9 @@ def main():
         command = [card_runner,card,output_file_name,nevents]
 
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        # The process is now running in the background
-        #print(f"Started background process with PID: {process.pid}")
-
-        process.wait()
-
-
+        
+        # Wait for the process to complete
+        stdout, stderr = process.communicate() # can print the stdout or stderr
 
 
 
